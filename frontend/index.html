@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tugas 2 Prak TCC</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>My Notes</h1>
+
+        <div class="form-container">
+            <h3 id="form-title"> Tambah Catatan</h3>
+            <input type="hidden" id="note-id">
+            <input type="text" id="judul" placeholder="Judul Catatan" required>
+            <textarea id="isi" rows="4" placeholder="Isi catatan disini..." required></textarea>
+            <button id="save-button" onclick="saveNote()"> Simpan </button>
+            <button id="cancel-button" onclick="resetForm()"> Batal </button>
+        </div>
+
+        <div id="notes-list"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
