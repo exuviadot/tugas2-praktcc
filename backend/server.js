@@ -5,10 +5,16 @@ const noteRoutes = require('./routes/noteRoutes');
 const app = express();
 const cors = require('cors');
 
+app.use(cors({
+  origin: ['http://localhost', 'http://localhost:5173', 'http://127.0.0.1:5500'],
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  credentials: true // Jika butuh kirim cookie/session
+}));
+
 app.use(express.json());
 
 app.get('/', (req, res) => {
-    res.send('Test test hehe!');
+    res.send('Hello World!');
 });
 
 require('./schema/Notes');
