@@ -8,11 +8,11 @@ body {
 
 .container {
     max-width: 600px;
-    margin: 0 auto;
+    margin: 20px auto;
 }
 
 h1 {
-    text-align: center;
+    /* text-align: center; */
     color: #0056b3;
 }
 
@@ -25,6 +25,8 @@ h1 {
 }
 
 input[type="text"] , textarea {
+    resize: vertical;
+    min-height: 40px;
     width: 100%;
     padding: 10px;
     margin: 10px 0;
@@ -35,7 +37,7 @@ input[type="text"] , textarea {
 
 button {
     padding: 10px 15px;
-    background-color: #28a745;
+    background-color: rgb(0, 180, 0);
     color: white;
     border: none;
     border-radius: 4px;
@@ -48,7 +50,7 @@ button:hover {
 }
 
 .note-card {
-    background: #fff;
+    background: white;
     padding: 15px;
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
@@ -79,10 +81,16 @@ button:hover {
 }
 
 .btn-edit {
-    background-color: #ffc107;
+    background-color: rgb(255, 255, 35);
     color: #000;
 }
 
 .btn-delete {
-    background-color: #dc3545;
+    background-color: crimson;
+}
+
+#cancel-button {
+    background-color: grey;
+    display: none;
+    transition: opacity 0.3s ease;
 }
