@@ -1,4 +1,4 @@
-const API_URL = 'http:localhost:3000/api/v1/notes';
+const API_URL = 'http://localhost:3000/api/v1/notes';
 
 document.addEventListener('DOMContentLoaded', fetchNotes);
 
@@ -6,7 +6,12 @@ async function fetchNotes() {
     try {
         const response = await fetch(API_URL);
         const notes = await response.json();
-        renderNotes(notes);
+
+        if (notes && Array.isArray(notes.data)) {
+            renderNotes(notes.data);
+        } else {
+            renderNotes(Array.isArray(notes) ? notes : []);
+        }
     } catch (error) {
         console.error('Error retrieving data:', error);
     }
@@ -26,9 +31,9 @@ function renderNotes(notes) {
             minute: '2-digit',
         });
 
-        const noteEl = document.createElement('div');
-        noteEl.className = 'note-card';
-        noteEl.innerHTML = `
+        const noteElement = document.createElement('div');
+        noteElement.className = 'note-card';
+        noteElement.innerHTML = `
             <h3>${note.judul}</h3>
             <span class="note-date"> ${dateStr} </span>
             <p>${note.isi}</p>
@@ -42,7 +47,7 @@ function renderNotes(notes) {
                         onclick="deleteNote(${note.id})"> Hapus </button>
             </div>
         `;
-        notesList.appendChild(noteEl);
+        notesList.appendChild(noteElement);
     });
 }
 
@@ -76,7 +81,7 @@ async function saveNote() {
         fetchNotes();
 
     } catch (error) {
-        console.log('Failed', error) // nanti diubah messagenya
+        console.log('Validation error:', error);
     }
 }
 
@@ -89,7 +94,7 @@ function editNote(id, judul, isi) {
 }
 
 async function deleteNote(id) {
-    if (confirm('Are you sure?')) { // nanti diubah messagenya
+    if (confirm('Apakah anda yakin ingin menghapus catatan ini?')) { 
         try {
             await fetch(`${API_URL}/${id}`, { method: 'DELETE' });
             fetchNotes();
@@ -103,6 +108,6 @@ function resetForm() {
     document.getElementById('form-title').innerText = 'Tambah Catatan';
     document.getElementById('note-id').value = '';
     document.getElementById('judul').value = '';
-    document.getElementById('isi').valie = '';
+    document.getElementById('isi').value = '';
     document.getElementById('cancel-button').style.display = 'none';
 }
