@@ -4,7 +4,7 @@ const getAllNotes = async(req, res) => {
     try {
         const allNotesData = await noteModel.getAll();
         res.status(200).json({
-            message: 'Notes retrived successfully',
+            message: 'Notes retrieved successfully',
             data: allNotesData,
         });
 
@@ -47,7 +47,9 @@ const updateNote = async (req, res) => {
             });
         }
 
-        const updatedNote = await noteModel.updateById(id, { judul, isi });
+        await noteModel.updateById(id, { judul, isi });
+
+        const updatedNote = await noteModel.findById(id, { judul, isi });
         res.status(200).json({
             message: 'Note updated successfully',
             data: updatedNote,
