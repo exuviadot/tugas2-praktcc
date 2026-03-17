@@ -1,4 +1,4 @@
-const API_URL = 'http://34.132.185.154:3000/api/v1/notes';
+const API_URL = 'http://localhost:3000/api/v1/notes';
 
 document.addEventListener('DOMContentLoaded', fetchNotes);
 
