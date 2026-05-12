@@ -12,8 +12,7 @@ const Notes = sequelize.define('Notes', {
     }
 }, {
     tableName: 'notes',
-    createdAt: 'tanggal_dibuat',
-    updatedAt: false
+    timestamps: true
 });
 
 module.exports = Notes;
