@@ -1,4 +1,4 @@
-const API_URL = 'https://backend-tugas3-123230167-720084965883.asia-southeast2.run.app/api/v1/notes';
+const API_URL = 'http://localhost:3000/api/v1/notes';
 
 document.addEventListener('DOMContentLoaded', fetchNotes);
 
@@ -22,7 +22,7 @@ function renderNotes(notes) {
     notesList.innerHTML = '';
 
     notes.forEach(note => {
-        const dateObj = new Date(note.createdAt);
+        const dateObj = new Date(note.tanggal_dibuat);
         const dateStr = dateObj.toLocaleDateString('id-ID', {
             year: 'numeric',
             month: 'short',
